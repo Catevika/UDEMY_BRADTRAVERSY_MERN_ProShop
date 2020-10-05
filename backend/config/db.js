@@ -7,9 +7,9 @@ const connectDB = async () => {
 			useNewUrlParser: true,
 			useCreateIndex: true
 		});
-		console.log(`MongoDB connected: ${conn.connection.host}`);
+		console.log(`MongoDB connected: ${conn.connection.host}`.cyan.bold); //use of color.js npm package
 	} catch (error) {
-		console.error(`Error: ${error.message}`);
+		console.error(`Error: ${error.message}`.magenta.bold);
 		process.exit(2);
 	}
 };

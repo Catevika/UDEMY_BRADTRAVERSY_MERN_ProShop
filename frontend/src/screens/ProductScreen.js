@@ -16,8 +16,6 @@ import Message from '../components/Message';
 import { listProductsDetails } from '../actions/productActions';
 
 const ProductScreen = ({ history, match }) => {
-	const [qty, setQty] = useState(0);
-
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -27,8 +25,10 @@ const ProductScreen = ({ history, match }) => {
 	const productDetails = useSelector((state) => state.productDetails);
 	const { loading, error, product } = productDetails;
 
+	const [qty, setQty] = useState(1);
+
 	const addToCartHandler = () => {
-		history.push(`/cart/${match.params.id}?qty={qty}`);
+		history.push(`/cart/${match.params.id}?qty=${qty}`);
 	};
 
 	return (

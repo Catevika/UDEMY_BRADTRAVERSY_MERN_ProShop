@@ -50,18 +50,16 @@ const RegisterScreen = ({ location, history }) => {
 						placeholder='Enter name'
 						value={name}
 						onChange={(e) => setName(e.target.value)}
-						autoComplete='current-name'
-					></Form.Control>
+						autoComplete='current-name'></Form.Control>
 				</Form.Group>
 				<Form.Group controlId='email'>
-					<Form.Label>Email Adress</Form.Label>
+					<Form.Label>Email Address</Form.Label>
 					<Form.Control
 						type='email'
 						placeholder='Enter Email'
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
-						autoComplete='current-email'
-					></Form.Control>
+						autoComplete='current-email'></Form.Control>
 				</Form.Group>
 				<Form.Group controlId='password'>
 					<Form.Label>Password</Form.Label>
@@ -70,8 +68,7 @@ const RegisterScreen = ({ location, history }) => {
 						placeholder='Enter password'
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						autoComplete='current-password'
-					></Form.Control>
+						autoComplete='current-password'></Form.Control>
 				</Form.Group>
 				<Form.Group controlId='confirmPassword'>
 					<Form.Label>Confirm Password</Form.Label>
@@ -80,8 +77,7 @@ const RegisterScreen = ({ location, history }) => {
 						placeholder='Confirm password'
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
-						autoComplete='current-confirm-password'
-					></Form.Control>
+						autoComplete='current-confirm-password'></Form.Control>
 				</Form.Group>
 				<Button type='submit' variant='primary'>
 					Register

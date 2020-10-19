@@ -36,24 +36,22 @@ const LoginScreen = ({ location, history }) => {
 			{loading && <Loader />}
 			<Form onSubmit={submitHandler}>
 				<Form.Group controlId='email'>
-					<Form.Label>Email Adress</Form.Label>
+					<Form.Label>Email Address</Form.Label>
 					<Form.Control
 						type='email'
 						placeholder='Enter Email'
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
-						autoComplete='current-email'
-					></Form.Control>
+						autoComplete='current-email'></Form.Control>
 				</Form.Group>
 				<Form.Group controlId='password'>
-					<Form.Label>Password Adress</Form.Label>
+					<Form.Label>Password</Form.Label>
 					<Form.Control
 						type='password'
 						placeholder='Enter password'
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						autoComplete='current-password'
-					></Form.Control>
+						autoComplete='current-password'></Form.Control>
 				</Form.Group>
 				<Button type='submit' variant='primary'>
 					Sign In

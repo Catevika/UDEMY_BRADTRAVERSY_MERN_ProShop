@@ -154,7 +154,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
 		});
 
 		localStorage.setItem('userInfo', JSON.stringify(data));
-		// TODO CHANGE userInfo in the header when updating the profile
+		// TODO CHANGE userInfo in the header on profile update
 	} catch (error) {
 		dispatch({
 			type: USER_UPDATE_PROFILE_FAIL,

@@ -11,7 +11,7 @@ const PlaceOrderScreen = ({ history }) => {
 
 	const cart = useSelector((state) => state.cart);
 
-	// Calculate Prices
+	// Calculate Prices for cart
 	const addDecimals = (num) => {
 		return (Math.round(num * 100) / 100).toFixed(2);
 	};

@@ -31,8 +31,6 @@ export const createOrder = (order) => async (dispatch, getState) => {
 			type: ORDER_CREATE_SUCCESS,
 			payload: data
 		});
-
-		localStorage.setItem('userInfo', JSON.stringify(data));
 		// TODO CHANGE userInfo in the header on profile update
 	} catch (error) {
 		dispatch({

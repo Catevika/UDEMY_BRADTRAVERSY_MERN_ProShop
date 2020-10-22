@@ -31,8 +31,8 @@ const addOrderItems = asyncHandler(async (req, res) => {
 			shippingPrice,
 			totalPrice
 		});
-		const creaetedORder = await order.save();
-		res.status(201).json(creaetedORder);
+		const createdOrder = await order.save();
+		res.status(201).json(createdOrder);
 	}
 });
 

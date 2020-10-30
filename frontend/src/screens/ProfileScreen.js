@@ -40,11 +40,11 @@ const ProfileScreen = ({ location, history }) => {
 				setEmail(user.email);
 			}
 		}
-	}, [dispatch, userInfo, history, user]);
+	}, [dispatch, history, userInfo, user]);
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		if (confirmPassword !== password) {
+		if (password !== confirmPassword) {
 			setMessage('Passwords do not match');
 		} else {
 			dispatch(updateUserProfile({ id: user._id, name, email, password }));
@@ -67,7 +67,8 @@ const ProfileScreen = ({ location, history }) => {
 							placeholder='Enter name'
 							value={name}
 							onChange={(e) => setName(e.target.value)}
-							autoComplete='current-name'></Form.Control>
+							autoComplete='current-name'
+						></Form.Control>
 					</Form.Group>
 					<Form.Group controlId='email'>
 						<Form.Label>Email Address</Form.Label>
@@ -76,7 +77,8 @@ const ProfileScreen = ({ location, history }) => {
 							placeholder='Enter Email'
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
-							autoComplete='current-email'></Form.Control>
+							autoComplete='current-email'
+						></Form.Control>
 					</Form.Group>
 					<Form.Group controlId='password'>
 						<Form.Label>Password</Form.Label>
@@ -85,7 +87,8 @@ const ProfileScreen = ({ location, history }) => {
 							placeholder='Enter password'
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
-							autoComplete='current-password'></Form.Control>
+							autoComplete='current-password'
+						></Form.Control>
 					</Form.Group>
 					<Form.Group controlId='confirmPassword'>
 						<Form.Label>Confirm Password</Form.Label>
@@ -94,7 +97,8 @@ const ProfileScreen = ({ location, history }) => {
 							placeholder='Confirm password'
 							value={confirmPassword}
 							onChange={(e) => setConfirmPassword(e.target.value)}
-							autoComplete='current-confirm-password'></Form.Control>
+							autoComplete='current-confirm-password'
+						></Form.Control>
 					</Form.Group>
 					<Button type='submit' variant='primary'>
 						Update
@@ -120,44 +124,34 @@ const ProfileScreen = ({ location, history }) => {
 							</tr>
 						</thead>
 						<tbody>
-							{!orders ? (
-								<tr>
-									<td colSpan='6'>No order yet</td>
+							{orders.map((order) => (
+								<tr key={order._id}>
+									<td>{order._id}</td>
+									<td>{order.createdAt.substring(0, 10)}</td>
+									<td>{order.totalPrice}</td>
+									<td>
+										{order.isPaid ? (
+											order.paidAt.substring(0, 10)
+										) : (
+											<i className='fas fa-times' style={{ color: 'red' }}></i>
+										)}
+									</td>
+									<td>
+										{order.isDelivered ? (
+											order.deliveredAt.substring(0, 10)
+										) : (
+											<i className='fas fa-times' style={{ color: 'red' }}></i>
+										)}
+									</td>
+									<td>
+										<LinkContainer to={`/order/${order._id}`}>
+											<Button className='btn-sm' variant='light'>
+												Details
+											</Button>
+										</LinkContainer>
+									</td>
 								</tr>
-							) : (
-								orders.map((order) => (
-									<tr key='order._id'>
-										<td>{order._id}</td>
-										<td>{order.createdAt.substring(0, 10)}</td>
-										<td>{order.totalPrice}</td>
-										<td>
-											{order.isPaid ? (
-												order.paidAt.substring(0, 10)
-											) : (
-												<i
-													className='fas fa-times'
-													style={{ color: 'red' }}></i>
-											)}
-										</td>
-										<td>
-											{order.isDelivered ? (
-												order.deliveredAt.substring(0, 10)
-											) : (
-												<i
-													className='fas fa-times'
-													style={{ color: 'red' }}></i>
-											)}
-										</td>
-										<td>
-											<LinkContainer to={`/order/${order.id}`}>
-												<Button variant='light' className='btn-sm'>
-													Details
-												</Button>
-											</LinkContainer>
-										</td>
-									</tr>
-								))
-							)}
+							))}
 						</tbody>
 					</Table>
 				)}
